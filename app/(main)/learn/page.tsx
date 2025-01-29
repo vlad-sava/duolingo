@@ -8,16 +8,16 @@ import { redirect } from "next/navigation"
 const LearnPage = async () => {
     const userProgressData =  getUserProgress()
 
-    // const [
-    //     userProgress
-    // ] = await Promise.all([
-    //     userProgressData
-    //  ])
+    const [
+        userProgress
+    ] = await Promise.all([
+        userProgressData
+     ])
 
-    //  if( !userProgress || !userProgress.activeCourse){
-    //     console.log("user progress este null!")
-    //     redirect("/courses")
-    //  }
+     if( !userProgress || !userProgress.activeCourse){
+        console.log("user progress este null!")
+        redirect("/courses")
+     }
     
     return (
         <div className="flex flex-row-reverse gap-[48px] px-6">

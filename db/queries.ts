@@ -1,6 +1,6 @@
 
 import {cache} from "react"
-import db from "@/db/drizzle"
+import db from "@/db/db"
 import {auth} from "@clerk/nextjs/server"
 import { courses, userProgress } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -9,18 +9,18 @@ import { eq } from "drizzle-orm";
 export const getUserProgress = cache (async () =>{
   
     const {userId} =  await auth();
-    console.log("gigi", userId);
     if(!userId){
         console.log("No userId found in auth()");
         return null;
     }
 try{
+  
     const data = await db.query.userProgress.findFirst({
         where: eq(userProgress.userId, userId),
         with: {
             activeCourse: true
         }
-    }).execute()
+    })
     return data
 } catch (error){
     console.error("Error querying userProgress:", error);

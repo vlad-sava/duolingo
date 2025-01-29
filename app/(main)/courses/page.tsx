@@ -7,7 +7,7 @@ const CoursesPage = async () => {
 
     const [
         courses,
-        // userProgress,
+        userProgress,
     ] = await Promise.all([
         coursesData,
         userProgressData
@@ -21,7 +21,7 @@ const CoursesPage = async () => {
             </h1>
             <List
                 courses = {courses}
-                // activeCourseId = {userProgress?.activeCourseId}
+                activeCourseId = {userProgress?.activeCourseId}
             />
         </div>
     )
